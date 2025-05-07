@@ -1,14 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/Product");
+const isAdmin = require("../middlewares/isAdmin");
+const {
+  getAllProducts,
+  addNewProduct,
+  deleteProduct,
+  updateProduct,
+} = require("../controllers/productController");
 
-router.get("/", async (req, res) => {
-    try {
-        const products = await Product.find();
-        res.json(products);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+router.get("/", getAllProducts);
+router.post("/", isAdmin, addNewProduct);
+router.put("/:id", isAdmin, updateProduct);
+router.delete("/:id", isAdmin, deleteProduct);
+
+router.use("/", (req, res) => {
+  res.status(400).json({
+    status: 400,
+    data: null,
+    message: "Invalid request",
+  });
 });
 
 module.exports = router;
