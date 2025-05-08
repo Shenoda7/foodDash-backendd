@@ -57,7 +57,6 @@ exports.login = async (req, res) => {
       id: foundUser._id,
       username: foundUser.username,
       role: foundUser.role,
-      cart: foundUser.cart,
     };
     const token = jwt.sign(data, process.env.JWT_SECRET);
     res.status(200).json({
