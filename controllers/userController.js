@@ -1,7 +1,9 @@
 const userModel = require("../models/User");
-const jwtDecode = require("jwt-decode");
+const jwtDecode = require("jwt-decode").jwtDecode;
 const getCart = function (req, res) {
-  const id = req.body.id;
+  const token = req.headers.Authorization.split(" ")[1];
+  const decoded = jwtDecode(token);
+  const id = decoded.id;
   userModel
     .findById(id)
     .then((user) => {
