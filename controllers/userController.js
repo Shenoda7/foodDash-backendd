@@ -1,7 +1,10 @@
 const userModel = require("../models/User");
 const jwtDecode = require("jwt-decode").jwtDecode;
 const getCart = function (req, res) {
-  const token = req.headers.Authorization.split(" ")[1];
+  const token =
+    req?.headers?.Authorization?.split(" ")[1] ||
+    req?.headers?.authorization?.split(" ")[1];
+
   const decoded = jwtDecode(token);
   const id = decoded.id;
   userModel
