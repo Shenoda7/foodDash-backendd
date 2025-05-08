@@ -22,12 +22,10 @@ const getAllProducts = function (req, res) {
 };
 
 const addNewProduct = function (req, res) {
-  const { img, name, rating, numOfRating, price, tag } = req.body;
+  const { img, name, price, tag } = req.body;
   const newProduct = new productModel({
     img,
     name,
-    rating,
-    numOfRating,
     price,
     tag,
   });
