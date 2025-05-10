@@ -53,8 +53,10 @@ exports.login = async (req, res) => {
         data: null,
         message: "wrong password",
       });
+    1;
+
     const data = {
-      id: foundUser._id,
+      _id: foundUser._id,
       username: foundUser.username,
       role: foundUser.role,
     };
