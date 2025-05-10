@@ -6,7 +6,7 @@ const getCart = function (req, res) {
     req?.headers?.authorization?.split(" ")[1];
 
   const decoded = jwtDecode(token);
-  const id = decoded.id;
+  const id = decoded._id;
   userModel
     .findById(id)
     .then((user) => {
