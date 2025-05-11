@@ -10,7 +10,7 @@ const getCart = function (req, res) {
   userModel
     .findById(id)
     .then((user) => {
-      res.status(200);
+      res.status(200); //ok
       res.json({
         status: 200,
         data: user.cart,

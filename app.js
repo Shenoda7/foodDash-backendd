@@ -20,6 +20,6 @@ app.use("/products", productRoutes);
 
 // app.listen(port, () => {
 //   console.log(`Server running on port ${port}`);
-// });
+// }); // because we are already hosting on vercel ,remove comments if you wanna test on your localhost
 
 module.exports = app;
